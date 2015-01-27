@@ -87,7 +87,7 @@ moveBall g
             | otherwise = xDir
         newYDir
             -- bounce off the top and bottom walls
-            | y <= _BOTTOM - (ballRadius/4) || y >= _TOP + (ballRadius/4) = -yDir
+            | y <= _BOTTOM + (ballRadius) || y >= _TOP - (ballRadius) = -yDir
             -- if x becomes 0, then stop movement along y as well.
             | newXDir == 0 = 0
             | otherwise = yDir
@@ -97,4 +97,3 @@ movePaddle p@(x,y,dir) factor =
     let y1 = y + factor * dir
         newY = min (_TOP-paddleHeight) $ max _BOTTOM y1
     in (x, newY, dir)
-
